@@ -1,0 +1,16 @@
+@media screen and (max-width: 800px) { 
+    
+
+.foot_mobile {
+  width: 25vw;
+  height: 5vw;
+  background: #000 !important;
+  color: aliceblue !important;
+  position: absolute;
+  bottom: 8vh;
+  left: 65%;
+text-align: start !important;
+ 
+}
+
+}

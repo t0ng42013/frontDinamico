@@ -1,0 +1,190 @@
+/* skill */
+.my__skills {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.skillbar {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 3rem;
+}
+
+.skills {
+  width: 14rem;
+  color: rgb(16, 78, 201);
+  padding: 0 10px;
+}
+
+.skills p {
+  padding-top: 1.25rem;
+  padding-bottom: 10px;
+}
+
+.skill__cont {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 15px;
+  color: var(--color-card);
+}
+
+.skill {
+  margin-left: 0;
+  text-align: right;
+  border-radius: 15px;
+}
+
+.html {
+  width: 75%;
+  background: var(--color-skills-oscuro);
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+}
+.css {
+  width: 70%;
+  background: var(--color-skills-oscuro);
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+}
+
+.js {
+  width: 55%;
+  background: var(--color-skills-oscuro);
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+}
+
+.bootstrap {
+  width: 60%;
+  background: var(--color-skills-oscuro);
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+}
+
+.java {
+  width: 70%;
+  background: var(--color-skills-oscuro);
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+}
+
+.angular {
+  width: 75%;
+  background: var(--color-skills-oscuro);
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-skills-oscuro) 0%,
+    var(--color-skill-claro) 51%,
+    var(--color-skills-oscuro) 100%
+  );
+}

@@ -1,0 +1,14 @@
+@media (max-width: 400px) {
+  .card {
+    margin-left: 2rem !important;
+  }
+}
+
+@media (min-height: 740px){
+.card{
+    max-height: 325px;
+}
+.row{
+    margin-bottom: 0 !important;
+}
+}

@@ -1,1 +1,183 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-skills-oscuro: #0b0f42;
+  --color-skill-claro: #2bc3f2;
+  --color-card: #07010d;
+  --color-card-deg1: #020107;
+  --color-card-deg2: #09030f;
+  --grad-1: rgb(195, 61, 218);
+  --grad-2: rgb(152, 120, 55);
+  --grad-3: rgb(94, 95, 138);
+  --grad-4: rgb(92, 203, 96);
+  --grad-5: rgb(183, 69, 198);
+  --grad-6: rgb(75, 172, 113);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 1200px;
+}
+body {
+  background: #000;
+}
+svg
+ {
+  display: none;
+}
+.container-fluid {
+  padding: 0;
+}
+.card {
+  position: absolute;
+  z-index: 9;
+  bottom: 0;
+  width: 35rem;
+  background: var(--color-card);
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    var(--color-card) 0%,
+    var(--color-card-deg1) 52%,
+    var(--color-card-deg2) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    var(--color-card) 0%,
+    var(--color-card-deg1) 52%,
+    var(--color-card-deg2) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-card) 0%,
+    var(--color-card-deg1) 52%,
+    var(--color-card-deg2) 100%
+  );
+  color: var(--grad-1);
+}
+
+.tab-pane {
+  width: 33rem;
+}
+.modal{
+    z-index: 999999999999;
+}
+.edit {
+ position: relative;
+ font-size: 12px;
+ margin: 0;
+ padding: 1;
+ z-index: 999;
+  margin: 0;
+  vertical-align: middle;
+}
+.card_mobile{
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+  * {
+    overflow: hidden;
+    font-size: 14px;
+    color: aliceblue;
+    font-size: 12px;
+  }
+  html {
+    background-color: #000;
+  }
+
+  .parallax,
+  .proyect,
+  .card_desktop,
+  .nav-main-desk,
+  h1 {
+    display: none;
+  }
+
+  header {
+    background: rgb(0, 0, 0);
+    width: 100vw;
+    border: white 1px solid;
+    vertical-align: middle;
+    border-top-left-radius: 0.5rem;
+  }
+
+  main {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    background: rgb(0, 0, 0);
+    width: 100vw;
+    padding: 20px 0;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  svg, 
+  .card_mobile{
+    display: flex;
+  }
+  .gradient1 {
+    stop-color: var(--grad-1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .gradient2 {
+    stop-color: var(--grad-2);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .edit {
+    background-color: #000;
+    /* border: none; */
+  }
+  .modal-content {
+    background: rgb(45, 45, 45);
+    }
+    .modal-backdrop{
+        --bs-backdrop-zindex: 0;
+    }
+  .card{
+    border: solid 2px red;
+   top:6rem;
+   width: 70%;
+   overflow: scroll !important;   
+}
+.scroll {
+  overflow-y: scroll;
+ animation: animacion 40s infinite linear;
+}
+.carousel-caption{
+    bottom: 2.3rem;
+}
+/* @keyframes animacion {
+   0%{
+    transform: translateY(298px);
+   }
+    100%{
+    transform: translateY(-298px);
+   }
+} */
+  
+}
+
+@media (max-width: 400px) {
+  .card{
+     margin-left: 2rem;
+  }
+  .redes_mobile {
+    flex-direction: row;
+    width: 15vw;
+    height: auto;
+    top: 20vw;
+  }
+
+  .btn_mobile {
+    font-size: 10px;
+    padding: 0;
+    text-align: left;
+  }
+
+
+}

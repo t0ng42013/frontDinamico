@@ -1,0 +1,70 @@
+.tab2 {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 50%;
+  margin: 0;
+}
+
+.nav_mobile{
+display: none;
+}
+
+@media screen and (max-width: 800px) { 
+    .nav_mobile{
+        display: block;  
+        width: 50vw; 
+        min-width: 200px;
+        margin-top: 5vh;   
+
+    }
+.nav_mobile > .nav {  
+  color: aliceblue !important;
+  border: black;
+}
+.btn_mobile {
+   max-width: 20vw; 
+  background: #000;
+  padding: 0.5rem;
+  margin-left: 10vw;
+  border: none;
+}
+.btn_mobile::after {
+  content: "";
+  display: inline-block;
+  width: 20vw;
+  height: .5vw;
+  background: linear-gradient(270deg, var(--grad-1) 0%, var(--grad-2) 100%);
+  position: relative;
+  left: .5vw;
+  bottom: 0;
+  
+}
+.btn_mobile:hover {
+  border-radius: 0.5rem 0 0.3rem;
+  background: linear-gradient(270deg, var(--grad-3) 0%, var(--grad-4) 100%);
+}
+.btn_mobile:focus {
+  border-radius: 0.5rem 0 0.3rem;
+  background-color: rgba(244, 232, 237, 0.053);
+}
+main nav {
+  margin-left: 5% !important;
+}
+.nav {
+    flex-direction: column;
+    display: flex;
+}
+}
+
+@media screen and (max-height:680px) { 
+.nav {
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+}
+.btn_mobile{
+    margin: 0;
+}
+
+
+}

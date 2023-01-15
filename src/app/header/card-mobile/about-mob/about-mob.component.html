@@ -1,0 +1,94 @@
+<!-- mobile about -->
+<div class="tab-pane fade show active card_mobile" id="nav-acerca-mobile" role="tabpanel"
+    aria-labelledby="nav-acerca-tab-mobile" tabindex="0">
+
+<div class="card m-1" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-4 logo_mobile">
+            <img src="./assets/img/fotoperfil.png" class="img-fluid rounded-circle m-1" alt="foto perfil">
+        </div>
+        <div class="col-8">
+            <div class="card-body">
+
+                <div *ngFor="let person of persona" class="card-body-desk">
+                    <button id="btn_close" type="button" class="btn-close btn-close-white position-absolute top-0 end-0"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div *ngIf="isLoggedIn" class="">
+                        <!-- Button trigger modal   botones eliminar y editar -->
+                        <button (click)="eliminar(person.id)" class="btn btn-danger">
+                            <span><i class="fa-solid fa-trash-can"></i></span>
+                        </button>
+                        <button (click)="loadedit(person.id)" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#modal_about1"><i class="fa-solid fa-pen"></i></button>
+                    </div>
+                    <h5 class="card-title">{{person.nombre}} {{person.apellido}}</h5>
+                    <p id="modAcerca" class="card-text"> {{person.titulo}} <br>{{person.sobreMi}}</p>
+                </div>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- modal_about -->
+<div *ngIf="isLoggedIn" class="modal fade modales " id="modal_about1" tabindex="-1" aria-labelledby=" modal_about"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id=" modal_about">Editar </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="SaveEmployee()">
+                    <div>
+                        <label> id</label>
+                        <div class="input-group">
+                            <input id="id" class="form-control" name="id" formControlName="id">
+                        </div>
+                    </div>
+                    <div>
+                        <label> Nombre</label>
+                        <div class="input-group">
+                            <input id="nombre" class="form-control" name="nombre" formControlName="nombre">
+                        </div>
+                    </div>
+                    <div>
+                        <label> apellido</label>
+                        <div class="input-group">
+                            <input id="apellido" class="form-control" name="apellido" formControlName="apellido">
+                        </div>
+                    </div>
+                    <div>
+                        <label> sobreMi</label>
+                        <div class="input-group">
+                            <input id="sobreMi" class="form-control" name="sobreMi" formControlName="sobreMi">
+                        </div>
+                    </div>
+                    <div>
+                        <label> url</label>
+                        <div class="input-group">
+                            <input id="url" class="form-control" name="url" formControlName="url">
+                        </div>
+                    </div>
+                    <div>
+                        <label> domicilio</label>
+                        <div class="input-group">
+                            <input id="domicilio" class="form-control" name="domicilio" formControlName="domicilio">
+                        </div>
+                    </div>
+                    <div>
+                        <label> titulo</label>
+                        <div class="input-group">
+                            <input id="titulo" class="form-control" name="titulo" formControlName="titulo">
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

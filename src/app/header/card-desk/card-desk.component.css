@@ -1,0 +1,36 @@
+
+.card {
+  position: absolute;
+  z-index: 9999;
+  bottom: 0;
+  width: 35rem;
+  background: var(--color-card);
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    var(--color-card) 0%,
+    var(--color-card-deg1) 52%,
+    var(--color-card-deg2) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    var(--color-card) 0%,
+    var(--color-card-deg1) 52%,
+    var(--color-card-deg2) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-card) 0%,
+    var(--color-card-deg1) 52%,
+    var(--color-card-deg2) 100%
+  );
+  color: var(--grad-1);
+}
+
+.tab-pane {
+  width: 33rem;
+}
+
+

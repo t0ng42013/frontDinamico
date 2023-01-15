@@ -1,0 +1,89 @@
+<!-- mobile Education-->
+<div class="tab-pane fade card_mobile" id="nav-edu-mobile" role="tabpanel" aria-labelledby="nav-edu-tab-movile"
+    tabindex="0">
+    <div class="card mb-3">     
+        <div class="card-body scroll">
+            <div *ngIf="isLoggedIn">
+                <!-- Button trigger modal -->
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_edu">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <h5 class="card-title text-center fs-5">Educación</h5>
+            <h5 class="card-title text-white fs-5">Titulos:</h5>
+            <h6 class="card-text text-white fs-6">
+                <ul>
+                    <li *ngFor="let educacion of listaEducacion">
+                        <div *ngIf="isLoggedIn" class="">
+                            <!-- Button trigger modal   botones eliminar y editar -->
+                            <button (click)="eliminar(educacion.id)" class="btn btn-danger">
+                                <span><i class="fa-solid fa-trash-can"></i></span>
+                            </button>
+                            <button (click)="loadedit(educacion.id)" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#modal_edu"><i class="fa-solid fa-pen"></i></button>
+                        </div>
+                        {{ educacion.instituto }} {{ educacion.titulo }}.
+                    </li>
+                </ul>
+            </h6>
+            <div *ngIf="isLoggedIn">
+                <!-- Button trigger modal -->
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_curso">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <h5 class="card-title text-white fs-5">Cursos:</h5>
+            <h6 class="card-text text-white fs-6">
+                <app-cursos-mob></app-cursos-mob>
+            </h6>
+        </div>
+    </div>
+</div>
+
+<!-- modal_edu -->
+<div  *ngIf="isLoggedIn" class="modal fade" id="modal_edu" tabindex="-1" aria-labelledby="modal_edu" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modal_edu">Educación</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="SaveEmployee()">
+                    <div class="mb-3">
+                        <label>id:</label>
+                        <input id="id" class="form-control" name="id" formControlName="id" />
+                    </div>
+                    <div class="mb-3">
+                        <label>instituto:</label>
+                        <input id="instituto" class="form-control" name="instituto" formControlName="instituto"
+                            [(ngModel)]="EduNueva.instituto" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Fecha inicio:</label>
+                        <input type="date" id="inicio" class="form-control" name="inicio" formControlName="inicio"
+                            [(ngModel)]="EduNueva.inicio" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Fecha Fin:</label>
+                        <input type="date" id="fin" class="form-control" name="fin" formControlName="fin"
+                            [(ngModel)]="EduNueva.fin" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Descripcion titulo:</label>
+                        <textarea class="form-control" id="message-text" name="titulo" formControlName="titulo"
+                            [(ngModel)]="EduNueva.titulo"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Salir
+                        </button>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
