@@ -5,7 +5,7 @@
             Cursos:
             <div *ngIf="isLoggedIn" class="edit">
                 <!-- Button trigger modal -->
-                <button class="btn btn-primary position-absolute edit" data-bs-toggle="modal" data-bs-target="#modal_curso"><i
+                <button (click)="nuevo()" class="btn btn-primary position-absolute edit" data-bs-toggle="modal" data-bs-target="#modal_curso4"><i
                         class="fa-solid fa-plus"></i></button>
             </div>
         </button>
@@ -21,7 +21,7 @@
                             <span><i class="fa-solid fa-trash-can"></i></span>
                         </button>
                         <button (click)="loadedit(curso.id)" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#modal_curso"><i class="fa-solid fa-pen"></i></button>
+                            data-bs-target="#modal_curso4"><i class="fa-solid fa-pen"></i></button>
                     </div>
                 </li>
             </ul>
@@ -29,7 +29,7 @@
     </div>
 </div>
 <!-- modal_edu -->
-<div class="modal fade" id="modal_curso" tabindex="-1" aria-labelledby="modal_exp" aria-hidden="true">
+<div *ngIf="isLoggedIn" class="modal fade" id="modal_curso4" tabindex="-1" aria-labelledby="modal_curso" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -40,32 +40,28 @@
                 <form [formGroup]="form" (ngSubmit)="SaveEmployee()">
 
                     <div class="mb-3">
-                        <label>id:</label>
+                        <label for="id">id:</label>
                         <input id="id" class="form-control" name="id" formControlName="id">
                     </div>
                     <div class="mb-3">
-                        <label>instituto:</label>
-                        <input id="instituto" class="form-control" name="instituto" formControlName="instituto"
-                            [(ngModel)]="cursoNuevo.instituto">
+                        <label for="instituto">instituto:</label>
+                        <input id="instituto" class="form-control" name="instituto" formControlName="instituto">
                     </div>
                     <div class="mb-3">
-                        <label>Fecha inicio:</label>
-                        <input type="date" id="inicio" class="form-control" name="inicio" formControlName="inicio"
-                            [(ngModel)]="cursoNuevo.inicio">
+                        <label for="inicio">Fecha inicio:</label>
+                        <input type="date" id="inicio" class="form-control" name="inicio" formControlName="inicio">
                     </div>
                     <div class="mb-3">
-                        <label>Fecha Fin:</label>
-                        <input type="date" id="fin" class="form-control" name="fin" formControlName="fin"
-                            [(ngModel)]="cursoNuevo.fin">
+                        <label for="fin">Fecha Fin:</label>
+                        <input type="date" id="fin" class="form-control" name="fin" formControlName="fin">
                     </div>
                     <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Descripcion titulo:</label>
-                        <textarea class="form-control" id="message-text" name="titulo" formControlName="titulo"
-                            [(ngModel)]="cursoNuevo.titulo"></textarea>
+                        <label for="titulo" class="col-form-label">Descripcion titulo:</label>
+                        <textarea class="form-control" id="titulo" name="titulo" formControlName="titulo"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        <button [disabled]="form.invalid" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
                     </div>
                 </form>
             </div>

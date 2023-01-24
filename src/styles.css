@@ -10,6 +10,9 @@
   --grad-4: rgb(92, 203, 96);
   --grad-5: rgb(183, 69, 198);
   --grad-6: rgb(75, 172, 113);
+  --bs-backdrop-zindex: 9999 !important;
+  --bs-backdrop-bg: #000 !important;
+  --bs-backdrop-opacity: 0 !important;
 }
 * {
   margin: 0;
@@ -61,8 +64,16 @@ svg
 .tab-pane {
   width: 33rem;
 }
-.modal{
-    z-index: 999999999999;
+
+.modal-backdrop
+ {
+     --bs-backdrop-zindex: 9999 !important;
+      --bs-backdrop-opacity: 0 !important;
+position: static !important;
+overflow: scroll !important;
+height: 30rem;
+
+  
 }
 .edit {
  position: relative;
@@ -128,16 +139,8 @@ svg
     transition: all 0.3s ease-in-out;
   }
 
-  .edit {
-    background-color: #000;
-    /* border: none; */
-  }
-  .modal-content {
-    background: rgb(45, 45, 45);
-    }
-    .modal-backdrop{
-        --bs-backdrop-zindex: 0;
-    }
+
+
   .card{
     border: solid 2px red;
    top:6rem;
@@ -150,16 +153,7 @@ svg
 }
 .carousel-caption{
     bottom: 2.3rem;
-}
-/* @keyframes animacion {
-   0%{
-    transform: translateY(298px);
-   }
-    100%{
-    transform: translateY(-298px);
-   }
-} */
-  
+}  
 }
 
 @media (max-width: 400px) {

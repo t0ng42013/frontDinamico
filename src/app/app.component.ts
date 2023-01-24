@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environments } from 'src/environments/environments.prod';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'Portfolio';
-     
-    
-
 }

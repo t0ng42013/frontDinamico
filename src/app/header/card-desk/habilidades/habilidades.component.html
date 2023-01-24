@@ -4,8 +4,8 @@
         <div class="card-body">
             <div *ngIf="isLoggedIn" class="edit">
                 <!-- Button trigger modal -->
-                <button class="btn btn-primary position-absolute edit" data-bs-toggle="modal"
-                    data-bs-target="#modal_skill"><i class="fa-solid fa-plus"></i></button>
+                <button (click)="nuevo()" class="btn btn-primary position-absolute edit" data-bs-toggle="modal"
+                    data-bs-target="#modal_skill4"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div class="my__skills">Habilidades</div>
             <div class="skillbar">
@@ -20,7 +20,7 @@
                         <button (click)="eliminar(skill.id)" class="btn btn-danger">
                             <span><i class="fa-solid fa-trash-can"></i></span>
                         </button>
-                        <button (click)="loadedit(skill.id)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_skill"><i
+                        <button (click)="loadedit(skill.id)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_skill4"><i
                                 class="fa-solid fa-pen"></i></button>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
     </div>
 </div>
 <!-- modal_skill -->
-<div class="modal fade" id="modal_skill" tabindex="-1" aria-labelledby="modal_skill" aria-hidden="true">
+<div class="modal fade" id="modal_skill4" tabindex="-1" aria-labelledby="modal_skill" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -44,11 +44,11 @@
                     </div>
                     <div class="mb-3">
                         <label>Nombre habilidad:</label>
-                        <input name="nombre" formControlName="nombre"type="text" class="form-control" id="nombre"  [(ngModel)]="skillNuevo.nombre" >
+                        <input name="nombre" formControlName="nombre"type="text" class="form-control" id="nombre">
                     </div>
                     <div class="mb-3">
                         <label>Porcentaje:</label>
-                        <input id="porcentaje" class="form-control" name="porcentaje" formControlName="porcentaje" type="number" [(ngModel)]="skillNuevo.porcentaje">
+                        <input id="porcentaje" class="form-control" name="porcentaje" formControlName="porcentaje" type="number">
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>

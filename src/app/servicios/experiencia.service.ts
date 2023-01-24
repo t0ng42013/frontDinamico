@@ -8,6 +8,7 @@ import { Experiencia } from '../model/experiencia';
 })
 export class ExperienciaService {
 
+    //url ='https://portfolio-ce5k.onrender.com/api/experiencia/';
     url = 'http://localhost:8080/api/experiencia/';
 
     constructor(private httpClient: HttpClient) { }

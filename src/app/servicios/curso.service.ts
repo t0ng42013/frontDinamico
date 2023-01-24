@@ -8,8 +8,8 @@ import { Curso } from '../model/curso';
 })
 export class CursoService {
 
-    url = 'http://localhost:8080/api/curso/';
-
+    //url ='https://portfolio-ce5k.onrender.com/api/curso/'
+    url = 'http://localhost:8080/api/curso/'
     constructor(private httpClient: HttpClient) { }
 
     lista(): Observable<any> {

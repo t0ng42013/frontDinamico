@@ -3,15 +3,7 @@
     <div class="card mb-3">
         <div class="row g-0">
             <div class="col-md-12 " style="width: 30rem;">
-                <div class="card-body">
-                    <!-- Button trigger modal -->
-                    <div *ngIf="isLoggedIn" class="position-absolute edit">
-                        <button type="button" class="btn btn-primary position-absolute edit" data-bs-toggle="modal"
-                            data-bs-target="#modal_edu">
-                            <span><i class="fa-solid fa-plus"></i></span>
-                        </button>
-                    </div>
-                    <div>
+                <div class="card-body">                
                         <h5 class="card-title text-center">Educación</h5>
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
@@ -22,7 +14,7 @@
                                         Titulos:
                                         <div *ngIf="isLoggedIn" class="">
                                             <!-- Button trigger modal -->
-                                            <button class="btn btn-primary position-absolute edit" data-bs-toggle="modal" data-bs-target="#modal_edu"><i
+                                            <button (click)="nuevo()" class="btn btn-primary position-absolute edit" data-bs-toggle="modal" data-bs-target="#modal_edu4"><i
                                                     class="fa-solid fa-plus"></i></button>
                                         </div>
                                     </button>
@@ -38,7 +30,7 @@
                                                         <span><i class="fa-solid fa-trash-can"></i></span>
                                                     </button>
                                                     <button (click)="loadedit(educacion.id)" class="btn btn-primary" data-bs-toggle="modal"
-                                                        data-bs-target="#modal_edu"><i class="fa-solid fa-pen"></i></button>
+                                                        data-bs-target="#modal_edu4"><i class="fa-solid fa-pen"></i></button>
                                                 </div>
                                                 {{educacion.instituto}}
                                                 {{educacion.titulo}}.</li>
@@ -46,6 +38,7 @@
                                     </div>
                                 </div>
                             </div>
+                          
                            <app-cursos></app-cursos>
                         </div>
                         <!-- fin acordeon -->
@@ -54,10 +47,9 @@
             </div>
         </div>
     </div>
-</div>
 
 <!-- modal_edu -->
-<div class="modal fade" id="modal_edu" tabindex="-1" aria-labelledby="modal_exp" aria-hidden="true">
+<div class="modal fade" id="modal_edu4" tabindex="-1" aria-labelledby="modal_edu" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -73,30 +65,27 @@
                     </div>
                     <div class="mb-3">
                         <label>instituto:</label>
-                        <input id="instituto" class="form-control" name="instituto" formControlName="instituto"
-                            [(ngModel)]="EduNueva.instituto">
+                        <input id="instituto" class="form-control" name="instituto" formControlName="instituto">
                     </div>                  
                     <div class="mb-3">
                         <label>Fecha inicio:</label>
-                        <input type="date" id="inicio" class="form-control" name="inicio" formControlName="inicio"
-                            [(ngModel)]="EduNueva.inicio">
+                        <input type="date" id="inicio" class="form-control" name="inicio" formControlName="inicio">
                     </div>
                     <div class="mb-3">
                         <label>Fecha Fin:</label>
-                        <input type="date" id="fin" class="form-control" name="fin" formControlName="fin"
-                            [(ngModel)]="EduNueva.fin">
+                        <input type="date" id="fin" class="form-control" name="fin" formControlName="fin">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Descripcion titulo:</label>
-                        <textarea class="form-control" id="message-text" name="titulo" formControlName="titulo"
-                            [(ngModel)]="EduNueva.titulo"></textarea>
+                        <textarea class="form-control" id="message-text" name="titulo" formControlName="titulo"></textarea>
                     </div>   
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        <button [disabled]="form.invalid" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+

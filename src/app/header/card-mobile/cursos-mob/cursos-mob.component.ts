@@ -40,7 +40,7 @@ export class CursosMobComponent {
     SaveEmployee() {
         if (this.form.value.id) {
             this.cursoService.editar(this.form.getRawValue()).subscribe(result => {
-                this.saveresponse = result, this;
+                this.saveresponse = result;
                 this.lista();
             }, err => console.log(err)
             );

@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Proyecto } from 'src/app/model/proyecto';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
@@ -11,45 +11,35 @@ import { ProyectoService } from 'src/app/servicios/proyecto.service';
   styleUrls: ['./proyect.component.css']
 })
 export class ProyectComponent implements OnInit {
-    proyectos: Proyecto[]=[];
+    public form!: FormGroup;
+    proyectos: Proyecto[] = [];
     id?: number;
     saveresponse: any;
     editdata: any;
     isLoggedIn = this.auth.getToken();
 
-    form = new FormGroup({
-        id: new FormControl(),
-        nombre: new FormControl(),
-        descripcion: new FormControl(),
-        imgUrl: new FormControl(),
-        variableI: new FormControl()
-
-    });
-
-    proyectoNuevo: Proyecto= {
-        nombre: '',
-        descripcion: '',
-        imgUrl: '',
-        variableI: 0
-    };
-
-    
-
-    constructor(private proyectoService: ProyectoService, private auth: AuthService){}
+    constructor(private proyectoService: ProyectoService, private formBuilder: FormBuilder, private auth: AuthService){}
    
     ngOnInit(): void {
+        this.form = this.formBuilder.group({
+            id: [''],
+            nombre: ['', Validators.required],
+            descripcion: [''],
+            imgUrl: [''],
+            variableI:['']
+        });
         this.lista();
     }
    
     SaveEmployee() {
         if (this.form.value.id) {
             this.proyectoService.editar(this.form.getRawValue()).subscribe(result => {
-                this.saveresponse = result, this;
-                this.lista();
+                this.saveresponse = result;
+                this.ngOnInit();
             }, err => console.log(err)
             );
         } else {
-            this.proyectoService.crear(this.proyectoNuevo).subscribe(res => {
+            this.proyectoService.crear(this.form.getRawValue()).subscribe(res => {
                 this.ngOnInit();
             },
                 err => console.log(err));
@@ -59,13 +49,7 @@ export class ProyectComponent implements OnInit {
     loadedit(id: any) {
         this.proyectoService.getUna(id).subscribe(result => {
             this.editdata = result;
-            this.form.patchValue({
-                id: this.editdata.id,
-                nombre: this.editdata.nombre,
-                descripcion: this.editdata.descripcion,
-                imgUrl: this.editdata.imgUrl,
-                variableI: this.editdata.variableI
-            })
+            this.form.patchValue(result)
         })
     }
 
@@ -77,15 +61,6 @@ export class ProyectComponent implements OnInit {
             err => console.log(err)
         );
     }
-
-    agregar() {
-        this.form.reset({ id: '', nombre: '' });
-        this.proyectoService.crear(this.proyectoNuevo).subscribe(res => {
-            this.ngOnInit();
-        },
-            err => console.log(err));
-    }
-
     eliminar(id: number) {
         this.proyectoService.borrar(id).subscribe(res => { this.ngOnInit(); },
             err => console.log(err)

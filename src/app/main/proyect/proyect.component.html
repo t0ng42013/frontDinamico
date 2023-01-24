@@ -10,7 +10,7 @@
                     <!-- Button trigger modal -->
                 <div *ngIf="isLoggedIn" class="">
                     <!-- Button trigger modal   botones y editar -->                    
-                    <button (click)="loadedit(proyecto.id)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_proyecto"><i
+                    <button (click)="loadedit(proyecto.id)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_proyecto4"><i
                             class="fa-solid fa-pen"></i></button>
                 </div>
                     <h5 class="card-title">{{proyecto.nombre}}</h5>
@@ -23,7 +23,7 @@
 <br>
 
 <!-- modal_proyecto-->
-<div class="modal fade" id="modal_proyecto" tabindex="-1" aria-labelledby="modal_proyecto" aria-hidden="true">
+<div  *ngIf="isLoggedIn" class="modal fade" id="modal_proyecto4" tabindex="-1" aria-labelledby="modal_proyecto" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -38,23 +38,19 @@
                     </div>
                     <div class="mb-3">
                         <label>Nombre proyecto:</label>
-                        <input name="nombre" formControlName="nombre" type="text" class="form-control" id="nombre"
-                            [(ngModel)]="proyectoNuevo.nombre">
+                        <input name="nombre" formControlName="nombre" type="text" class="form-control" id="nombre">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Descripcion:</label>
-                        <textarea class="form-control" id="message-text" name="descripcion" formControlName="descripcion"
-                            [(ngModel)]="proyectoNuevo.descripcion"></textarea>
+                        <textarea class="form-control" id="message-text" name="descripcion" formControlName="descripcion"></textarea>
                     </div>
                     <div class="mb-3">
                         <label>URL imagen:</label>
-                        <input id="imgUrl" class="form-control" name="imgUrl" formControlName="imgUrl"
-                            [(ngModel)]="proyectoNuevo.imgUrl">
+                        <input id="imgUrl" class="form-control" name="imgUrl" formControlName="imgUrl">
                     </div>
                     <div class="mb-3">
                         <label>numero:</label>
-                        <input id="variableI" class="form-control" name="variableI" formControlName="variableI" type="number"
-                            [(ngModel)]="proyectoNuevo.variableI">
+                        <input id="variableI" class="form-control" name="variableI" formControlName="variableI" type="number">
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>

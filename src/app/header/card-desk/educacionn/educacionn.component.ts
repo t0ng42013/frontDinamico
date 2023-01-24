@@ -1,9 +1,9 @@
-import { Component,OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Educacion } from 'src/app/model/educacion';
+import { Component,OnInit,ViewChild,AfterViewInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { CursoService } from 'src/app/servicios/curso.service';
 import { EducacionService } from 'src/app/servicios/educacion.service';
+import { CursosComponent } from '../cursos/cursos.component';
 
 @Component({
   selector: 'app-educacionn',
@@ -11,36 +11,31 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
   styleUrls: ['./educacionn.component.css']
 })
 export class EducacionnComponent  implements OnInit{
-    listaEducacion: any = [];   
+    
+    listaEducacion: any = [];    
     id?: number;
     saveresponse: any;
     editdata: any;
     isLoggedIn = this.auth.getToken();
 
-    form = new FormGroup({
-        id: new FormControl(),
-        instituto: new FormControl(),
-        inicio: new FormControl(),
-        fin: new FormControl(),
-        titulo: new FormControl(),
-
-    });
-
-
-    EduNueva: Educacion = {
-        instituto: '',
-        inicio: '',
-        fin: '',
-        titulo: ''
-
-    };
-
-    constructor(private educacionService: EducacionService,
-        private auth: AuthService,
-        private cursoService:CursoService) { }
+    public form!: FormGroup;
+  
+    constructor(private formBuilder:FormBuilder,
+        private educacionService: EducacionService,
+        private auth: AuthService) { }
+  
+        
     ngOnInit(): void {
-        this.lista();
+        this.form = this.formBuilder.group({
+            id: [''],
+            instituto: ['', Validators.required],
+            inicio: [''],
+            fin: [''],
+            titulo: ['']
+        });
+        this.lista()
     }
+
     SaveEmployee() {
         if (this.form.value.id) {
             this.educacionService.editar(this.form.getRawValue()).subscribe(result => {
@@ -49,7 +44,7 @@ export class EducacionnComponent  implements OnInit{
             }, err => console.log(err)
             );
         } else {
-            this.educacionService.crear(this.EduNueva).subscribe(res => {
+            this.educacionService.crear(this.form.getRawValue()).subscribe(res => {
                 this.ngOnInit();
             },
                 err => console.log(err));
@@ -59,13 +54,7 @@ export class EducacionnComponent  implements OnInit{
     loadedit(id: any) {
         this.educacionService.getUna(id).subscribe(result => {
             this.editdata = result;
-            this.form.patchValue({
-                id: this.editdata.id,
-                instituto: this.editdata.instituto,               
-                inicio: this.editdata.inicio,
-                fin: this.editdata.fin,
-                titulo: this.editdata.titulo
-            })
+            this.form.patchValue(result)
         })
     }
 
@@ -75,23 +64,17 @@ export class EducacionnComponent  implements OnInit{
                 this.listaEducacion = res;
             },
             err => console.log(err)
-        );
+        );       
     }
-
-    agregar() {
-        this.form.reset({ id: '', instituto: '' });
-        this.educacionService.crear(this.EduNueva).subscribe(res => {
-            this.ngOnInit();
-        },
-            err => console.log(err));
-    }
-
+   
     eliminar(id: number) {
         this.educacionService.borrar(id).subscribe(res => { this.ngOnInit(); },
             err => console.log(err)
         );
     }
 
-
+    nuevo() {
+        this.form.reset();
+    }
 
 }

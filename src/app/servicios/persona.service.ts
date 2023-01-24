@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Persona } from '../model/persona';
 
@@ -8,8 +8,8 @@ import { Persona } from '../model/persona';
 })
 export class PersonaService {
     
+    //url ='https://portfolio-ce5k.onrender.com/api/persona/';
     url = 'http://localhost:8080/api/persona/';
-
     constructor(private httpClient: HttpClient) { }
 
     getPersonas(): Observable<any> {
@@ -21,7 +21,7 @@ export class PersonaService {
     }
 
     crearPersoan(persona: Persona): Observable<any> {
-        return this.httpClient.post(this.url + 'crear', persona);
+        return this.httpClient.post(this.url + 'create', persona);
     }
 
     editarPersona(inputdata: any): Observable<any> {

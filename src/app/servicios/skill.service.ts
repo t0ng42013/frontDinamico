@@ -7,6 +7,7 @@ import { Skill } from '../model/skill';
   providedIn: 'root'
 })
 export class SkillService {
+    //url = 'https://portfolio-ce5k.onrender.com/api/skill/';
     url = 'http://localhost:8080/api/skill/';
 
     constructor(private httpClient: HttpClient) { }

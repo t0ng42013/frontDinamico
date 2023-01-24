@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Persona } from 'src/app/model/persona';
 import { AuthService } from 'src/app/servicios/auth.service';
@@ -9,7 +9,7 @@ import { PersonaService } from 'src/app/servicios/persona.service';
   templateUrl: './about-mob.component.html',
   styleUrls: ['./about-mob.component.css']
 })
-export class AboutMobComponent {
+export class AboutMobComponent implements OnInit {
     persona: any = [];
     id?: number;
     saveresponse: any;
@@ -67,8 +67,7 @@ export class AboutMobComponent {
     listaPersonas() {
         this.personaService.getPersonas().subscribe(
             res => {
-                this.persona = res;
-                console.log(res);
+                this.persona = res;                
             },
             err => console.log(err)
         );

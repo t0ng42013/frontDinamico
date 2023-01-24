@@ -1,6 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Curso } from 'src/app/model/curso';
+import {  FormBuilder,Validators, FormGroup} from '@angular/forms';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { CursoService } from 'src/app/servicios/curso.service';
 
@@ -10,42 +9,38 @@ import { CursoService } from 'src/app/servicios/curso.service';
   styleUrls: ['./cursos.component.css']
 })
 export class CursosComponent implements OnInit {
+    public form! :FormGroup;
+    
     listaCursos: any = [];
-    id?: number;
+    editdata: any; 
     saveresponse: any;
-    editdata: any;
     isLoggedIn = this.auth.getToken();
 
-    form = new FormGroup({
-        id: new FormControl(),
-        instituto: new FormControl(),
-        inicio: new FormControl(),
-        fin: new FormControl(),
-        titulo: new FormControl(),
-    });
-
-   cursoNuevo: Curso = {
-        instituto: '',
-        inicio: '',
-        fin: '',
-        titulo: ''
-    };
-
-    constructor(private cursoService: CursoService, private auth: AuthService) { }
+    constructor(private cursoService: CursoService,
+        private formBuilder: FormBuilder,        
+        private auth: AuthService) { }
    
     ngOnInit(): void {
+        this.form = this.formBuilder.group({
+            id: [''],
+            instituto: ['',Validators.required],
+            inicio: [''],
+            fin: [''],
+            titulo:['']
+        });
         this.lista();
-    }
+ }
     
-    SaveEmployee() {
+    SaveEmployee(): any {
+        console.log('object');
         if (this.form.value.id) {
             this.cursoService.editar(this.form.getRawValue()).subscribe(result => {
-                this.saveresponse = result, this;
-                this.lista();
+                this.saveresponse = result;
+                this.ngOnInit();
             }, err => console.log(err)
             );
         } else {            
-            this.cursoService.crear(this.cursoNuevo).subscribe(res => {
+            this.cursoService.crear(this.form.getRawValue()).subscribe(res => {
                 this.ngOnInit();
             },
                 err => console.log(err));
@@ -55,13 +50,7 @@ export class CursosComponent implements OnInit {
     loadedit(id: any) {
         this.cursoService.getUna(id).subscribe(result => {
             this.editdata = result;
-            this.form.patchValue({
-                id: this.editdata.id,
-                instituto: this.editdata.instituto,
-                inicio: this.editdata.inicio,
-                fin: this.editdata.fin,
-                titulo: this.editdata.titulo
-            })
+            this.form.patchValue(result)
         })
     }
 
@@ -74,19 +63,14 @@ export class CursosComponent implements OnInit {
         );
     }
 
-    agregar() {
-        this.form.reset({ id: '', instituto: '' });
-        this.cursoService.crear(this.cursoNuevo).subscribe(res => {
-            this.ngOnInit();
-        },
-            err => console.log(err));
-    }
-
     eliminar(id: number) {
         this.cursoService.borrar(id).subscribe(res => { this.ngOnInit(); },
             err => console.log(err)
         );
     }
 
-
+    nuevo() {
+        this.form.reset();
+    }
+    
 }

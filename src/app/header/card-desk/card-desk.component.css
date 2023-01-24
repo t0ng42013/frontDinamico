@@ -11,7 +11,9 @@
     var(--color-card) 0%,
     var(--color-card-deg1) 52%,
     var(--color-card-deg2) 100%
+    
   );
+
   /* FF3.6-15 */
   background: -webkit-linear-gradient(
     left,

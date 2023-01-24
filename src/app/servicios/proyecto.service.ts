@@ -8,6 +8,7 @@ import { Proyecto } from '../model/proyecto';
 })
 export class ProyectoService {
 
+    //url ='https://portfolio-ce5k.onrender.com/api/proyecto/';
     url = 'http://localhost:8080/api/proyecto/';
 
     constructor(private httpClient: HttpClient) { }

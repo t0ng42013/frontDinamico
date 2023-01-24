@@ -4,8 +4,8 @@
         <div class="card-body">
             <div *ngIf="isLoggedIn" class="position-absolute edit">
                 <!-- Button trigger modal -->
-                <button  class="btn btn-primary position-absolute edit" data-bs-toggle="modal"
-                    data-bs-target="#modal_exp"><i class="fa-solid fa-plus"></i></button>
+                <button (click)="nuevo()" class="btn btn-primary position-absolute edit" data-bs-toggle="modal"
+                    data-bs-target="#modal_exp4"><i class="fa-solid fa-plus"></i></button>
             </div>
             <h5 class="card-title text-center">Experiencia</h5>
             <div *ngFor="let experiencia of experiencias">
@@ -16,7 +16,7 @@
                         <span><i class="fa-solid fa-trash-can"></i></span>
                     </button>
                     <button  (click)="loadedit(experiencia.id)" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#modal_exp"><i class="fa-solid fa-pen"></i></button>
+                        data-bs-target="#modal_exp4"><i class="fa-solid fa-pen"></i></button>
                 </div>
                 <h5 class="card-title text-white"> {{experiencia.nombre}}
                 </h5>                
@@ -29,7 +29,7 @@
 </div>
 
 <!-- modal_exp -->
-<div class="modal fade" id="modal_exp" tabindex="-1" aria-labelledby="modal_exp" aria-hidden="true">
+<div class="modal fade" id="modal_exp4" tabindex="-1" aria-labelledby="modal_exp" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -37,50 +37,50 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="form" (ngSubmit)="SaveEmployee()">
+                <form [formGroup]="formexp" (ngSubmit)="Save()">
                    
                     <div class="mb-3">
-                        <label>id:</label>
+                        <label for="id">id:</label>
                         <input id="id" class="form-control" name="id" formControlName="id">
                     </div>
                     <div class="mb-3">
-                        <label>Puesto o trabajo:</label>
-                        <input id="nombre" class="form-control" name="nombre" formControlName="nombre" [(ngModel)]="expNueva.nombre">
+                        <label for="nombre">Puesto o trabajo:</label>
+                        <input id="nombre" class="form-control" name="nombre" formControlName="nombre">
                     </div>
                     <div class="mb-3">
-                        <label>Trabajo actual?:<input type="checkbox" formControlName="trabajo" [(ngModel)]="expNueva.Trabajo"></label>
+                        <label for="trb">Trabajo actual?:<input id="trb" type="checkbox" formControlName="trabajo"></label>
                     </div>
                     <div class="mb-3">
-                        <label>Fecha inicio:</label>
-                        <input type="date" id="inicio" class="form-control" name="inicio" formControlName="inicio" [(ngModel)]="expNueva.inicio">
+                        <label for="inicio">Fecha inicio:</label>
+                        <input type="date" id="inicio" class="form-control" name="inicio" formControlName="inicio">
                     </div>
                     <div class="mb-3">
-                        <label>Fecha Fin:</label>
-                        <input type="date" id="fin" class="form-control" name="fin" formControlName="fin" [(ngModel)]="expNueva.fin">
+                        <label for="fin">Fecha Fin:</label>
+                        <input type="date" id="fin" class="form-control" name="fin" formControlName="fin">
                     </div>
                     <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Descripcion 1:</label>
-                        <textarea class="form-control" id="message-text" name="tarea1"
-                            formControlName="tarea1" [(ngModel)]="expNueva.tarea1"></textarea>
+                        <label for="tarea1" class="col-form-label">Descripcion 1:</label>
+                        <textarea class="form-control" id="tarea1" name="tarea1"
+                            formControlName="tarea1"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Descripcion 2:</label>
-                        <textarea class="form-control" id="message-text" name="tarea2"
-                            formControlName="tarea2" [(ngModel)]="expNueva.tarea2"></textarea>
+                        <label for="tarea2" class="col-form-label">Descripcion 2:</label>
+                        <textarea class="form-control" id="tarea2" name="tarea2"
+                            formControlName="tarea2"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Descripcion 3:</label>
-                        <textarea class="form-control" id="message-text" name="tarea3"
-                            formControlName="tarea3" [(ngModel)]="expNueva.tarea3"></textarea>
+                        <label for="tarea3" class="col-form-label">Descripcion 3:</label>
+                        <textarea class="form-control" id="tarea3" name="tarea3"
+                            formControlName="tarea3"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Descripcion 4:</label>
-                        <textarea class="form-control" id="message-text" name="tarea4"
-                            formControlName="tarea4" [(ngModel)]="expNueva.tarea4"></textarea>
+                        <label for="tarea4" class="col-form-label">Descripcion 4:</label>
+                        <textarea class="form-control" id="tarea4" name="tarea4"
+                            formControlName="tarea4"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button  class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>                        
+                        <button [disabled]="formexp.invalid" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>                        
                     </div>
                 </form>
             </div>

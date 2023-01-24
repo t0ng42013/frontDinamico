@@ -14,11 +14,13 @@
                         data-bs-dismiss="modal" aria-label="Close"></button>
                     <div *ngIf="isLoggedIn" class="">
                         <!-- Button trigger modal   botones eliminar y editar -->
+                        <button (click)="nuevo()" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#modal_about4"><i class="fa-solid fa-plus"></i></button>
                         <button (click)="eliminar(person.id)" class="btn btn-danger">
                             <span><i class="fa-solid fa-trash-can"></i></span>
                         </button>
                         <button (click)="loadedit(person.id)" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#modal_about1"><i class="fa-solid fa-pen"></i></button>
+                            data-bs-target="#modal_about4"><i class="fa-solid fa-pen"></i></button>
                     </div>
                     <h5 class="card-title">{{person.nombre}} {{person.apellido}}</h5>
                     <p id="modAcerca" class="card-text"> {{person.titulo}} <br>{{person.sobreMi}}</p>
@@ -30,7 +32,7 @@
 </div>
 </div>
 <!-- modal_about -->
-<div *ngIf="isLoggedIn" class="modal fade modales " id="modal_about1" tabindex="-1" aria-labelledby=" modal_about"
+<div *ngIf="isLoggedIn" class="modal fade modales " id="modal_about4" tabindex="-1" aria-labelledby=" modal_about"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

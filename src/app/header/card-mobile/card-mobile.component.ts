@@ -28,7 +28,7 @@ export class CardMobileComponent implements OnInit {
     curso: Curso[] = [];
     skill: Skill[] = [];
     proyecto: Proyecto[] = [];
-
+    
 
     constructor( private EducacionService: EducacionService, private ExperienciaService: ExperienciaService, private personaService: PersonaService, private banenrService: BannerService, private cursoService: CursoService, private skillService: SkillService, private proyectoService: ProyectoService) { 
        

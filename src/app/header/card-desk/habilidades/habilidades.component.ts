@@ -1,36 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Skill } from 'src/app/model/skill';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AuthService } from 'src/app/servicios/auth.service';
 import { SkillService } from 'src/app/servicios/skill.service';
 
 @Component({
-  selector: 'app-habilidades',
-  templateUrl: './habilidades.component.html',
-  styleUrls: ['./habilidades.component.css']
+    selector: 'app-habilidades',
+    templateUrl: './habilidades.component.html',
+    styleUrls: ['./habilidades.component.css']
 })
 export class HabilidadesComponent implements OnInit {
-
+    public form!: FormGroup;
     skills: any = [];
-    id?: number;
     saveresponse: any;
     editdata: any;
     isLoggedIn = this.auth.getToken();
 
-    form = new FormGroup({
-        id: new FormControl(),
-        nombre: new FormControl(),
-        porcentaje: new FormControl()
+    constructor(private skillService: SkillService,
+        private formBuilder: FormBuilder,
+        private auth: AuthService) { }
 
-    });
-
-    skillNuevo: Skill = {
-        nombre: '',
-        porcentaje: 0,
-    };
-
-    constructor(private skillService: SkillService, private auth: AuthService) { }
     ngOnInit(): void {
+        this.form = this.formBuilder.group({
+            id: [''],
+            nombre: ['', Validators.required],
+            porcentaje: [''],
+        });
         this.lista();
     }
 
@@ -42,7 +37,7 @@ export class HabilidadesComponent implements OnInit {
             }, err => console.log(err)
             );
         } else {
-            this.skillService.crear(this.skillNuevo).subscribe(res => {
+            this.skillService.crear(this.form.getRawValue()).subscribe(res => {
                 this.ngOnInit();
             },
                 err => console.log(err));
@@ -52,11 +47,7 @@ export class HabilidadesComponent implements OnInit {
     loadedit(id: any) {
         this.skillService.getUna(id).subscribe(result => {
             this.editdata = result;
-            this.form.patchValue({
-                id: this.editdata.id,
-                nombre: this.editdata.nombre,
-                porcentaje: this.editdata.porcentaje
-            })
+            this.form.patchValue(result)
         })
     }
 
@@ -69,18 +60,14 @@ export class HabilidadesComponent implements OnInit {
         );
     }
 
-    agregar() {
-        this.form.reset({ id: '', nombre: '' });
-        this.skillService.crear(this.skillNuevo).subscribe(res => {
-            this.ngOnInit();
-        },
-            err => console.log(err));
-    }
-
     eliminar(id: number) {
         this.skillService.borrar(id).subscribe(res => { this.ngOnInit(); },
             err => console.log(err)
         );
+    }
+
+    nuevo() {
+        this.form.reset();
     }
 
 }
